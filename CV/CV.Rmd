@@ -1,0 +1,248 @@
+---
+name: Max Czapanskiy
+position: "PhD Candidate"
+address: "Hopkins Marine Station, Stanford University"
+email: "maxczapanskiy@gmail.com"
+twitter: mfczap
+github: FlukeAndFeather
+date: "`r format(Sys.time(), '%B %Y')`"
+output: 
+  vitae::awesomecv:
+    page_total: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+library(tidyverse)
+library(vitae)
+```
+
+# Education
+
+```{r education}
+tribble(
+  ~ degree, ~ uni, ~ loc, ~ dates, ~ details,
+  "PhD in Biology", "Stanford University", "Pacific Grove, CA", "Expected 2022",
+  list("Advised by Jeremy Goldbogen",
+       "Dissertation: Cardio-respiratory physiology of baleen whales"),
+  "MS in Geographic Information Systems", "San Francisco State University", "San Francisco, CA", "2018",
+  list("Advised by Ellen Hines",
+       "Thesis: Using energy landscapes to understand seabird movement and spatial ecology",
+       "Graduate hood, College of Science \\& Engineering"),
+  "BS in Computer Science", "Columbia University", "New York, NY", "2014", 
+    list()) %>% 
+  detailed_entries(degree, dates, uni, loc, details)
+```
+
+# Publications
+
+```{r publications}
+clean_authors <- function(author_list) {
+  to_initials <- function(author) {
+    names <- str_split(author, " ")[[1]]
+    names[1:(length(names) - 1)] <- substr(names[1:(length(names) - 1)], 1, 1)
+    sprintf("%s, %s.", 
+            names[length(names)], 
+            paste(names[1:(length(names) - 1)], collapse = ". "))
+  }
+  author_list <- map_chr(author_list, to_initials)
+  author_list[author_list == "Czapanskiy, M. F."] <- "\\textbf{Czapanskiy, M. F.}"
+  if (length(author_list) > 9) {
+    author_list <- c(author_list[1:8], "...", author_list[length(author_list)])
+  }
+  paste(author_list, collapse = ", ")
+}
+bib2df::bib2df("works.bib") %>% 
+  mutate(AUTHOR = map_chr(AUTHOR, clean_authors)) %>% 
+  detailed_entries(
+    what = AUTHOR,
+    when = YEAR, 
+    with = TITLE, 
+    where = JOURNAL,
+    .protect = FALSE
+  )
+```
+
+## In review
+```{r in-review}
+bib2df::bib2df("review.bib") %>% 
+  mutate(AUTHOR = map_chr(AUTHOR, clean_authors)) %>% 
+  detailed_entries(
+    what = AUTHOR,
+    with = TITLE, 
+    where = JOURNAL,
+    .protect = FALSE
+  )
+```
+
+## Technical reports
+
+```{r reports}
+tribble(
+  ~ year, ~ title, ~ authors, ~ report,
+  2020,
+    "Habitat Affinities and At-Sea Ranging Behaviors among Main Hawaiian Island Seabirds: Breeding Seabird Telemetry, 2013–2016.",
+    "Adams, J., Felis, J.J., \\textbf{Czapanskiy, M.F.}",
+    "OCS Study BOEM 2020-006.",
+  2019,
+    "Trends in mammalian predator control trapping events intended to protect ground-nesting, endangered birds at Haleakalā National Park, Hawaiʻi: 2000–14.",
+    "Kelsey, E.C., Adams, J., \\textbf{Czapanskiy, M.F.}, Felis, J.J., Yee, J.L., Kaholoaa R.L., and Bailey, C.N.",
+    "U.S. Geological Survey Open-File Report 2019–1122."
+) %>% 
+  detailed_entries(
+    what = authors,
+    with = title,
+    where = report,
+    when = year,
+    .protect = FALSE
+  )
+```
+
+# Teaching and Mentoring
+
+```{r teaching}
+tribble(
+  ~ year, ~ title, ~ institution, ~ role, ~ details,
+  "2021", 
+    "Just Enough Software Engineering (For Scientists)",
+    "Stanford University",
+    "Lead instructor and course designer",
+    list(
+      "Self-guided, mastery-based software engineering course for biosciences graduate students",
+      "Two-week instensive short course"
+    ),
+  "2021",
+    "Introduction to Physiological Ecology",
+    "Stanford University",
+    "Teaching assistant",
+    list(),
+  "2019",
+    "Undergraduate researcher mentor",
+    "CSU Monterey Bay REU",
+    "NSF REU Mentor",
+    list(
+      "Mentored Hayden Smith in quantitative analysis",
+      "Hayden presented his work at the 2020 Society for Integrative and Comparative Biology Meeting and published it in the \\textit{Journal of Exp. Bio.} (Gough et al., 2021)."
+    ),
+  "2018 - present",
+    "Data Carpentry",
+    "The Carpentries",
+    "Certified Instructor",
+    list(),
+  "2018",
+    "Introduction to Ecology",
+    "Stanford University",
+    "Teaching assitant",
+    list(),
+  "2016 - 2017",
+    "Introduction to GIS",
+    "San Francisco State University",
+    "Teaching assistant",
+    list()
+) %>% 
+  detailed_entries(
+    with = title,
+    what = role,
+    when = year,
+    where = institution,
+    why = details,
+    .protect = FALSE
+  )
+```
+
+# Software
+
+```{r software}
+tribble(
+  ~ software, ~ link, ~ language, ~ details,
+  "stickleback", "(pypi.org/project/stickleback)", "Python",
+    "A machine learning pipeline for detecting fine-scale behavioral events in bio-logging data",
+  "rstickleback", "(github.com/FlukeAndFeather/rstickleback)", "R",
+    "An R interface to the stickleback machine learning pipeline",
+  "catsr", "(doi.org/10.5281/zenodo.5140484)", "R",
+    "Tools for reading and visualizing 3D bio-logging data; accompanies Cade et al. (2021)",
+  "beats", "(github.com/FlukeAndFeather/beats)", "R",
+    "Interactive tools for importing, annotating, and validating ECG bio-logger data"
+) %>% 
+  mutate(software = sprintf("%s %s", software, link)) %>% 
+  detailed_entries(
+    what = details,
+    when = language,
+    with = software,
+    .protect = FALSE
+  )
+```
+
+# Conference presentations
+
+```{r conferences}
+tribble(
+  ~ year, ~ title, ~ conference, ~ location,
+  "2021",
+    "Stickleback: A machine learning pipeline for detecting behavioral events in bio-logging data",
+    "7th International Bio-Logging Symposium",
+    "Online",
+  "2018",
+    "Quantifying the Influence of Energy Windscapes on Seabird Distributions",
+    "Ocean Sciences Meeting",
+    "Portland, OR",
+  "2017",
+    "Modeling Seabird Habitat Accessibility",
+    "Society for Conservation GIS Annual Conference",
+    "Pacific Grove, CA",
+  "2016",
+    "Taking the Plunge: Comparing Diving Behavior of Red-footed and Brown Boobies Breeding on Lehua Islet, Hawaii",
+    "Pacific Seabird Group Annual Meeting",
+    "Turtle Bay, HI"
+) %>% 
+  detailed_entries(
+    what = conference,
+    with = title,
+    when = year,
+    where = location,
+    .protect = FALSE
+  )
+```
+
+# Work experience
+
+```{r work}
+tribble(
+  ~ what, ~ when, ~ with,
+  "Biological Sciences Technician",
+    "2014 - 2017",
+    "U.S. Geological Survey Western Ecological Research Center",
+  "Avian Point Count Technician",
+    "2014",
+    "University of Montana Avian Science Center",
+  "Field Assistant and Data Analyst",
+    "2012 - 2013",
+    "Friends of Cooper Island",
+  "Marine Ecology Intern",
+    "2013",
+    "Point Blue Conservation Science",
+  "Software Developer Engineer in Test",
+    "2009 - 2013",
+    "Microsoft"
+) %>% 
+  detailed_entries(what, when, with)
+```
+
+# Awards and scholarships
+
+```{r}
+tribble(
+  ~ when, ~ with, ~ what,
+  "2020", "Stanford Data Science Scholar Fellowship", "Stanford Data Science Initiative",
+  "2018", "Stanford Graduate Fellowship", "Vice Provost for Graduate Education",
+  "2018", "Graduate Hood", "San Francisco State University, College of Science and Engineering",
+  "2018", "Esri Development Center Student of the Year", "Esri",
+  "2018", "COAST Research Award", "California State University, Council on Ocean Affairs",
+  "2017", "Maxwell Memorial Scholarship", "San Francisco State University, College of Science and Engineering",
+  "2017", "Pease Award", "San Francisco State University, Department of Geography and Environment",
+  "2017", "CWEP Award for Graduate Student Writing", "San Francisco State University"
+) %>% 
+  detailed_entries(what, when, with)
+```
+
+
