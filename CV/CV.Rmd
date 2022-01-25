@@ -1,6 +1,6 @@
 ---
 name: Max Czapanskiy
-position: "PhD Candidate"
+position: "PhD Candidate, Ecological Data Scientist"
 address: "Hopkins Marine Station, Stanford University"
 email: "maxczapanskiy@gmail.com"
 twitter: mfczap
