@@ -110,7 +110,7 @@ tribble(
     "Lead instructor and course designer",
     list(
       "Self-guided, mastery-based software engineering course for biosciences graduate students",
-      "Two-week instensive short course"
+      "Two-week intensive short course"
     ),
   "2021",
     "Introduction to Physiological Ecology",
