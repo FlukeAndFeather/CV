@@ -16,6 +16,7 @@ knit: (function(inputFile, encoding) { rmarkdown::render(inputFile, encoding = e
 knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
 library(tidyverse)
 library(vitae)
+source("util.R")
 ```
 
 # Education
@@ -25,7 +26,7 @@ tribble(
   ~ degree, ~ uni, ~ loc, ~ dates, ~ details,
   "PhD in Biology", "Stanford University", "Pacific Grove, CA", "Expected 2022",
   list("Advised by Jeremy Goldbogen",
-       "Dissertation: Cardio-respiratory physiology of baleen whales"),
+       "Dissertation: Baleen whale physiology revealed through the integration of bio-logging and ecoinformatics"),
   "MS in Geographic Information Systems", "San Francisco State University", "San Francisco, CA", "2018",
   list("Advised by Ellen Hines",
        "Thesis: Using energy landscapes to understand seabird movement and spatial ecology",
@@ -38,23 +39,8 @@ tribble(
 # Publications
 
 ```{r publications}
-clean_authors <- function(author_list) {
-  to_initials <- function(author) {
-    names <- str_split(author, " ")[[1]]
-    names[1:(length(names) - 1)] <- substr(names[1:(length(names) - 1)], 1, 1)
-    sprintf("%s, %s.", 
-            names[length(names)], 
-            paste(names[1:(length(names) - 1)], collapse = ". "))
-  }
-  author_list <- map_chr(author_list, to_initials)
-  author_list[author_list == "Czapanskiy, M. F."] <- "\\textbf{Czapanskiy, M. F.}"
-  if (length(author_list) > 9) {
-    author_list <- c(author_list[1:8], "...", author_list[length(author_list)])
-  }
-  paste(author_list, collapse = ", ")
-}
 bib2df::bib2df("works.bib") %>% 
-  mutate(AUTHOR = map_chr(AUTHOR, clean_authors)) %>% 
+  mutate(AUTHOR = map_chr(AUTHOR, combine_authors)) %>% 
   detailed_entries(
     what = AUTHOR,
     when = YEAR, 
@@ -67,7 +53,7 @@ bib2df::bib2df("works.bib") %>%
 ## In review
 ```{r in-review}
 bib2df::bib2df("review.bib") %>% 
-  mutate(AUTHOR = map_chr(AUTHOR, clean_authors)) %>% 
+  mutate(AUTHOR = map_chr(AUTHOR, combine_authors)) %>% 
   detailed_entries(
     what = AUTHOR,
     with = TITLE, 
