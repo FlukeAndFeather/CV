@@ -1,7 +1,6 @@
 ---
-name: Max Czapanskiy
-position: "PhD Candidate, Ecological Data Scientist"
-address: "Hopkins Marine Station, Stanford University"
+name: Max Czapanskiy, PhD
+position: "Ecological Data Scientist"
 email: "maxczapanskiy@gmail.com"
 twitter: mfczap
 github: FlukeAndFeather
@@ -24,7 +23,7 @@ source("util.R")
 ```{r education}
 tribble(
   ~ degree, ~ uni, ~ loc, ~ dates, ~ details,
-  "PhD in Biology", "Stanford University", "Pacific Grove, CA", "Expected 2022",
+  "PhD in Biology", "Stanford University", "Pacific Grove, CA", "2022",
   list("Advised by Jeremy Goldbogen",
        "Dissertation: Baleen whale physiology revealed through the integration of bio-logging and ecoinformatics"),
   "MS in Geographic Information Systems", "San Francisco State University", "San Francisco, CA", "2018",
