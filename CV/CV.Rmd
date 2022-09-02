@@ -18,6 +18,12 @@ library(vitae)
 source("util.R")
 ```
 
+# Research interests
+
+* Ecophysiology of marine vertebrates
+* Developing cyberinfrastructure for bio-logging research
+* Promoting open science through software engineering principles
+
 # Education
 
 ```{r education}
@@ -89,6 +95,14 @@ tribble(
 ```{r teaching}
 tribble(
   ~ year, ~ title, ~ institution, ~ role, ~ details,
+  "2022",
+    "Undergraduate researcher mentor",
+    "Stanford University",
+    "REEFS Mentor",
+    list(
+      "Mentored Lilah McCormick in quantitative ecophysiology.",
+      "Lilah learned reproducible research techniques in R and is writing a paper about measuring cardiac function in narwhals."
+    ),
   "2021", 
     "Just Enough Software Engineering (For Scientists)",
     "Stanford University",
@@ -107,8 +121,8 @@ tribble(
     "CSU Monterey Bay REU",
     "NSF REU Mentor",
     list(
-      "Mentored Hayden Smith in quantitative analysis",
-      "Hayden presented his work at the 2020 Society for Integrative and Comparative Biology Meeting and published it in the \\textit{Journal of Exp. Bio.} (Gough et al., 2021)."
+      "Mentored Hayden Smith in quantitative analysis.",
+      "Hayden presented his work at the 2020 Society for Int. and Comp. Bio. Meeting and published it in the \\textit{Journal of Exp. Bio.} (Gough et al., 2021)."
     ),
   "2018 - present",
     "Data Carpentry",
@@ -216,19 +230,11 @@ tribble(
 
 # Awards and scholarships
 
-```{r}
-tribble(
-  ~ when, ~ with, ~ what,
-  "2020", "Stanford Data Science Scholar Fellowship", "Stanford Data Science Initiative",
-  "2018", "Stanford Graduate Fellowship", "Vice Provost for Graduate Education",
-  "2018", "Graduate Hood", "San Francisco State University, College of Science and Engineering",
-  "2018", "Esri Development Center Student of the Year", "Esri",
-  "2018", "COAST Research Award", "California State University, Council on Ocean Affairs",
-  "2017", "Maxwell Memorial Scholarship", "San Francisco State University, College of Science and Engineering",
-  "2017", "Pease Award", "San Francisco State University, Department of Geography and Environment",
-  "2017", "CWEP Award for Graduate Student Writing", "San Francisco State University"
-) %>% 
-  detailed_entries(what, when, with)
-```
-
-
+* Stanford Data Science Scholar Fellowship, Stanford Data Science Initiative (2020)
+* Stanford Graduate Fellowship, Vice Provost for Graduate Education (2018)
+* Graduate Hood, San Francisco State University, College of Science and Engineering (2018)
+* Esri Development Center Student of the Year, Esri (2018)
+* COAST Research Award, California State University, Council on Ocean Affairs (2018)
+* Maxwell Memorial Scholarship, San Francisco State University, College of Science and Engineering (2017)
+* Pease Award, San Francisco State University, Department of Geography and Environment (2017)
+* CWEP Award for Graduate Student Writing, San Francisco State University (2017)
