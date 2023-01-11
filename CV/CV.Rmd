@@ -1,9 +1,9 @@
 ---
 name: Max Czapanskiy, PhD
-position: "Ecological Data Scientist"
+position: "Ecology | Data Science"
 email: "maxczapanskiy@gmail.com"
-twitter: mfczap
 github: FlukeAndFeather
+www: flukeandfeather.com
 date: "`r format(Sys.time(), '%B %Y')`"
 output: 
   vitae::awesomecv:
@@ -17,12 +17,6 @@ library(tidyverse)
 library(vitae)
 source("util.R")
 ```
-
-# Research interests
-
-* Ecophysiology of marine vertebrates
-* Developing cyberinfrastructure for bio-logging research
-* Promoting open science through software engineering principles
 
 # Education
 
@@ -39,6 +33,36 @@ tribble(
   "BS in Computer Science", "Columbia University", "New York, NY", "2014", 
     list()) %>% 
   detailed_entries(degree, dates, uni, loc, details)
+```
+
+# Employment
+
+```{r work}
+tribble(
+  ~ what, ~ when, ~ with,
+  "Postdoctoral Scholar",
+    "2022 - present",
+    "NOAA / UC Santa Cruz",
+  "Stanford Data Science Scholar",
+    "2019 - 2021",
+    "Stanford University",
+  "Biological Sciences Technician",
+    "2014 - 2017",
+    "U.S. Geological Survey Western Ecological Research Center",
+  "Avian Point Count Technician",
+    "2014",
+    "University of Montana Avian Science Center",
+  "Field Assistant and Data Analyst",
+    "2012 - 2013",
+    "Friends of Cooper Island",
+  "Marine Ecology Intern",
+    "2013",
+    "Point Blue Conservation Science",
+  "Software Developer Engineer in Test",
+    "2009 - 2012",
+    "Microsoft"
+) %>% 
+  detailed_entries(what, when, with)
 ```
 
 # Publications
@@ -108,7 +132,7 @@ tribble(
     "Stanford University",
     "Lead instructor and course designer",
     list(
-      "Self-guided, mastery-based software engineering course for biosciences graduate students",
+      "Self-directed, mastery-oriented software engineering course for biosciences graduate students",
       "Two-week intensive short course"
     ),
   "2021",
@@ -202,30 +226,6 @@ tribble(
     where = location,
     .protect = FALSE
   )
-```
-
-# Work experience
-
-```{r work}
-tribble(
-  ~ what, ~ when, ~ with,
-  "Biological Sciences Technician",
-    "2014 - 2017",
-    "U.S. Geological Survey Western Ecological Research Center",
-  "Avian Point Count Technician",
-    "2014",
-    "University of Montana Avian Science Center",
-  "Field Assistant and Data Analyst",
-    "2012 - 2013",
-    "Friends of Cooper Island",
-  "Marine Ecology Intern",
-    "2013",
-    "Point Blue Conservation Science",
-  "Software Developer Engineer in Test",
-    "2009 - 2013",
-    "Microsoft"
-) %>% 
-  detailed_entries(what, when, with)
 ```
 
 # Awards and scholarships
