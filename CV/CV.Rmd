@@ -1,9 +1,12 @@
 ---
 name: Max Czapanskiy, PhD
 position: "Ecology | Data Science"
+profilepic: headshot.jpg
 email: "maxczapanskiy@gmail.com"
 github: FlukeAndFeather
 www: flukeandfeather.com
+orcid: 0000-0002-6302-905X
+headcolor: 619D8C
 date: "`r format(Sys.time(), '%B %Y')`"
 output: 
   vitae::awesomecv:
