@@ -1,6 +1,6 @@
 ---
 name: Max Czapanskiy, PhD
-position: "NOAA/UC Santa Cruz, Postdoctoral Scholar"
+position: "UC Santa Barbara, Assistant Professor of Teaching"
 profilepic: headshot.jpg
 email: "maxczapanskiy@gmail.com"
 github: FlukeAndFeather
@@ -50,24 +50,20 @@ tribble(
     "UC Santa Cruz",
     "Lead instructor",
     list(
-      "Graduate seminar in the Department of Ecology and Evolutionary Biology covering scientific programming, computational project management, and open science principles.",
+      "Graduate seminar in the Department of Eco and Evo Bio covering scientific programming, project management, and open science.",
       "Course website: flukeandfeather.github.io/BIOE215fall23/"
     ),
   "2022",
     "Undergraduate researcher mentor",
     "Stanford University",
     "REEFS Mentor",
-    list(
-      "Mentored Lilah McCormick in quantitative ecophysiology.",
-      "Lilah learned reproducible research techniques in R and is writing a paper about measuring cardiac function in narwhals."
-    ),
+    list(),
   "2021", 
     "Just Enough Software Engineering (For Scientists)",
     "Stanford University",
     "Lead instructor",
     list(
-      "Self-directed, mastery-oriented software engineering course for biosciences graduate students.",
-      "Two-week intensive short course."
+      "Two-week self-directed, mastery-oriented software engineering course for biosciences graduate students"
     ),
   "2021",
     "Introduction to Physiological Ecology",
@@ -79,8 +75,7 @@ tribble(
     "CSU Monterey Bay REU",
     "NSF REU Mentor",
     list(
-      "Mentored Hayden Smith in quantitative analysis.",
-      "Hayden presented his work at the 2020 Society for Int. and Comp. Bio. Meeting and published it in the \\textit{Journal of Exp. Bio.} (Gough et al., 2021)."
+      "Mentee Hayden Smith presented his work at a conference and published it in the \\textit{Journal of Exp. Bio.} (Gough et al., 2021)."
     ),
   "2018 - present",
     "Data Carpentry",
@@ -116,18 +111,6 @@ bib2df::bib2df("works.bib") %>%
   detailed_entries(
     what = AUTHOR,
     when = YEAR, 
-    with = TITLE, 
-    where = JOURNAL,
-    .protect = FALSE
-  )
-```
-
-## In review
-```{r in-review}
-bib2df::bib2df("review.bib") %>% 
-  mutate(AUTHOR = map_chr(AUTHOR, combine_authors)) %>% 
-  detailed_entries(
-    what = AUTHOR,
     with = TITLE, 
     where = JOURNAL,
     .protect = FALSE
@@ -185,8 +168,11 @@ tribble(
 ```{r work}
 tribble(
   ~ what, ~ when, ~ with,
+  "Assistant Professor of Teaching",
+    "2024 - Present",
+    "UC Santa Barbara, Bren School & College of Creative Studies",
   "Postdoctoral Scholar",
-    "2022 - present",
+    "2022 - 2024",
     "NOAA / UC Santa Cruz",
   "Stanford Data Science Scholar",
     "2019 - 2021",
@@ -243,11 +229,51 @@ tribble(
 
 # Awards and scholarships
 
-* Stanford Data Science Scholar Fellowship, Stanford Data Science Initiative (2020)
-* Stanford Graduate Fellowship, Vice Provost for Graduate Education (2018)
-* Graduate Hood, San Francisco State University, College of Science and Engineering (2018)
-* Esri Development Center Student of the Year, Esri (2018)
-* COAST Research Award, California State University, Council on Ocean Affairs (2018)
-* Maxwell Memorial Scholarship, San Francisco State University, College of Science and Engineering (2017)
-* Pease Award, San Francisco State University, Department of Geography and Environment (2017)
-* CWEP Award for Graduate Student Writing, San Francisco State University (2017)
+```{r awards}
+tribble(
+  ~ year, ~ title, ~ from, ~ where,
+  "2020",
+    "Stanford Data Science Scholar Fellowship",
+    "Stanford Data Science Initiative",
+    "Stanford University",
+  "2019",
+    "Outstanding Teaching Assistant Award",
+    "Department of Biology",
+    "Stanford University",
+  "2018",
+    "Stanford Graduate Fellowship",
+    "Vice Provost for Graduate Education",
+    "Stanford University",
+  "2018",
+    "Graduate Hood",
+    "College of Science and Engineering",
+    "San Francisco State University",
+  "2018",
+    "Student of the Year",
+    "Esri Development Center",
+    "Esri",
+  "2018",
+    "COAST Reasearch Award",
+    "Council on Ocean Affairs",
+    "California State University",
+  "2017",
+    "Maxwell Memorial Scholarship",
+    "College of Science and Engineering",
+    "San Francisco State University",
+  "2017",
+    "Pease Award",
+    "Department of Geography and Environmentt",
+    "San Francisco State University",
+  "2017",
+    "CWEP Award for Graduate Student Writing",
+    "University Committee on Written English Proficiency",
+    "San Francisco State University"
+) %>% 
+  detailed_entries(
+    what = title,
+    with = from,
+    when = year,
+    where = where,
+    .protect = FALSE
+  )
+```
