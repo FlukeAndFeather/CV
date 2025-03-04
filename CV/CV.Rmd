@@ -1,8 +1,8 @@
 ---
 name: Max Czapanskiy, PhD
 position: "UC Santa Barbara, Assistant Professor of Teaching"
-profilepic: headshot.jpg
-email: "maxczapanskiy@gmail.com"
+profilepic: flippyhairs.png
+email: "maxczap@ucsb.edu"
 github: FlukeAndFeather
 www: flukeandfeather.com
 orcid: 0000-0002-6302-905X
@@ -21,84 +21,57 @@ library(vitae)
 source("util.R")
 ```
 
-Ecologist, data scientist, and educator. I teach scientists at all career stages how to improve their data analysis skills through innovative course design and hands-on mentorship. My research integrates software engineering and ecology to promote open and reproducible science.
+# Appointments
+
+```{r work}
+tribble(
+  ~ what, ~ when, ~ with,
+  "Assistant Professor of Teaching",
+    "2024 - Present",
+    "UC Santa Barbara, Bren School of Environmental Science and Management & College of Creative Studies",
+  "Postdoctoral Scholar",
+    "2022 - 2024",
+    "NOAA, Southwest Fisheries Science Center | UC Santa Cruz, Ocean Sciences"
+) %>% 
+  detailed_entries(what, when, with)
+```
 
 # Education
 
 ```{r education}
 tribble(
-  ~ degree, ~ uni, ~ loc, ~ dates, ~ details,
+  ~ degree, ~ uni, ~ loc, ~ dates,
   "PhD in Biology", "Stanford University", "Pacific Grove, CA", "2022",
-  list("Advised by Jeremy Goldbogen",
-       "Dissertation: Baleen whale physiology revealed through the integration of bio-logging and ecoinformatics"),
   "MS in Geographic Information Systems", "San Francisco State University", "San Francisco, CA", "2018",
-  list("Advised by Ellen Hines",
-       "Thesis: Using energy landscapes to understand seabird movement and spatial ecology",
-       "Graduate hood, College of Science \\& Engineering"),
-  "BS in Computer Science", "Columbia University", "New York, NY", "2014", 
-    list()) %>% 
-  detailed_entries(degree, dates, uni, loc, details)
+  "BS in Computer Science", "Columbia University", "New York, NY", "2014") %>% 
+  detailed_entries(degree, dates, uni, loc)
 ```
 
-# Teaching and Mentoring
+# Teaching
 
 ```{r teaching}
 tribble(
-  ~ year, ~ title, ~ institution, ~ role, ~ details,
+  ~ year, ~ title, ~ institution,
+  "2025",
+    "Intro to Marine Data Science",
+    "UC Santa Barbara",
+  "2024",
+    "Statistics for Environmental Data Science",
+    "UC Santa Barbara",
   "2023",
     "Data Science for Eco/Evo",
     "UC Santa Cruz",
-    "Lead instructor",
-    list(
-      "Graduate seminar in the Department of Eco and Evo Bio covering scientific programming, project management, and open science.",
-      "Course website: flukeandfeather.github.io/BIOE215fall23/"
-    ),
-  "2022",
-    "Undergraduate researcher mentor",
-    "Stanford University",
-    "REEFS Mentor",
-    list(),
   "2021", 
     "Just Enough Software Engineering (For Scientists)",
     "Stanford University",
-    "Lead instructor",
-    list(
-      "Two-week self-directed, mastery-oriented software engineering course for biosciences graduate students"
-    ),
-  "2021",
-    "Introduction to Physiological Ecology",
-    "Stanford University",
-    "Teaching assistant",
-    list(),
-  "2019",
-    "Undergraduate researcher mentor",
-    "CSU Monterey Bay REU",
-    "NSF REU Mentor",
-    list(
-      "Mentee Hayden Smith presented his work at a conference and published it in the \\textit{Journal of Exp. Bio.} (Gough et al., 2021)."
-    ),
   "2018 - present",
-    "Data Carpentry",
-    "The Carpentries",
-    "Certified Instructor",
-    list(),
-  "2018",
-    "Introduction to Ecology",
-    "Stanford University",
-    "Teaching assistant",
-    list(),
-  "2016 - 2017",
-    "Introduction to GIS",
-    "San Francisco State University",
-    "Teaching assistant",
-    list()
+    "Data Carpentry (Certified Instructor)",
+    "The Carpentries"
 ) %>% 
-  detailed_entries(
-    with = title,
-    what = role,
+  brief_entries(
+    what = title,
     when = year,
-    where = institution,
-    why = details,
+    with = institution,
     .protect = FALSE
   )
 ```
@@ -117,163 +90,3 @@ bib2df::bib2df("works.bib") %>%
   )
 ```
 
-## Technical reports
-
-```{r reports}
-tribble(
-  ~ year, ~ title, ~ authors, ~ report,
-  2020,
-    "Habitat Affinities and At-Sea Ranging Behaviors among Main Hawaiian Island Seabirds: Breeding Seabird Telemetry, 2013–2016.",
-    "Adams, J., Felis, J.J., \\textbf{Czapanskiy, M.F.}",
-    "OCS Study BOEM 2020-006.",
-  2019,
-    "Trends in mammalian predator control trapping events intended to protect ground-nesting, endangered birds at Haleakalā National Park, Hawaiʻi: 2000–14.",
-    "Kelsey, E.C., Adams, J., \\textbf{Czapanskiy, M.F.}, Felis, J.J., Yee, J.L., Kaholoaa R.L., and Bailey, C.N.",
-    "U.S. Geological Survey Open-File Report 2019–1122."
-) %>% 
-  detailed_entries(
-    what = authors,
-    with = title,
-    where = report,
-    when = year,
-    .protect = FALSE
-  )
-```
-
-# Software
-
-```{r software}
-tribble(
-  ~ software, ~ link, ~ language, ~ details,
-  "stickleback", "(pypi.org/project/stickleback)", "Python",
-    "A machine learning pipeline for detecting fine-scale behavioral events in bio-logging data",
-  "rstickleback", "(github.com/FlukeAndFeather/rstickleback)", "R",
-    "An R interface to the stickleback machine learning pipeline",
-  "catsr", "(doi.org/10.5281/zenodo.5140484)", "R",
-    "Tools for reading and visualizing 3D bio-logging data; accompanies Cade et al. (2021)",
-  "beats", "(github.com/FlukeAndFeather/beats)", "R",
-    "Interactive tools for importing, annotating, and validating ECG bio-logger data"
-) %>% 
-  mutate(software = sprintf("%s %s", software, link)) %>% 
-  detailed_entries(
-    what = details,
-    when = language,
-    with = software,
-    .protect = FALSE
-  )
-```
-
-# Employment
-
-```{r work}
-tribble(
-  ~ what, ~ when, ~ with,
-  "Assistant Professor of Teaching",
-    "2024 - Present",
-    "UC Santa Barbara, Bren School & College of Creative Studies",
-  "Postdoctoral Scholar",
-    "2022 - 2024",
-    "NOAA / UC Santa Cruz",
-  "Stanford Data Science Scholar",
-    "2019 - 2021",
-    "Stanford University",
-  "Biological Sciences Technician",
-    "2014 - 2017",
-    "U.S. Geological Survey Western Ecological Research Center",
-  "Avian Point Count Technician",
-    "2014",
-    "University of Montana Avian Science Center",
-  "Field Assistant and Data Analyst",
-    "2012 - 2013",
-    "Friends of Cooper Island",
-  "Marine Ecology Intern",
-    "2013",
-    "Point Blue Conservation Science",
-  "Software Developer Engineer in Test",
-    "2009 - 2012",
-    "Microsoft"
-) %>% 
-  detailed_entries(what, when, with)
-```
-
-# Conference presentations
-
-```{r conferences}
-tribble(
-  ~ year, ~ title, ~ conference, ~ location,
-  "2021",
-    "Stickleback: A machine learning pipeline for detecting behavioral events in bio-logging data",
-    "7th International Bio-Logging Symposium",
-    "Online",
-  "2018",
-    "Quantifying the Influence of Energy Windscapes on Seabird Distributions",
-    "Ocean Sciences Meeting",
-    "Portland, OR",
-  "2017",
-    "Modeling Seabird Habitat Accessibility",
-    "Society for Conservation GIS Annual Conference",
-    "Pacific Grove, CA",
-  "2016",
-    "Taking the Plunge: Comparing Diving Behavior of Red-footed and Brown Boobies Breeding on Lehua Islet, Hawaii",
-    "Pacific Seabird Group Annual Meeting",
-    "Turtle Bay, HI"
-) %>% 
-  detailed_entries(
-    what = conference,
-    with = title,
-    when = year,
-    where = location,
-    .protect = FALSE
-  )
-```
-
-# Awards and scholarships
-
-```{r awards}
-tribble(
-  ~ year, ~ title, ~ from, ~ where,
-  "2020",
-    "Stanford Data Science Scholar Fellowship",
-    "Stanford Data Science Initiative",
-    "Stanford University",
-  "2019",
-    "Outstanding Teaching Assistant Award",
-    "Department of Biology",
-    "Stanford University",
-  "2018",
-    "Stanford Graduate Fellowship",
-    "Vice Provost for Graduate Education",
-    "Stanford University",
-  "2018",
-    "Graduate Hood",
-    "College of Science and Engineering",
-    "San Francisco State University",
-  "2018",
-    "Student of the Year",
-    "Esri Development Center",
-    "Esri",
-  "2018",
-    "COAST Reasearch Award",
-    "Council on Ocean Affairs",
-    "California State University",
-  "2017",
-    "Maxwell Memorial Scholarship",
-    "College of Science and Engineering",
-    "San Francisco State University",
-  "2017",
-    "Pease Award",
-    "Department of Geography and Environmentt",
-    "San Francisco State University",
-  "2017",
-    "CWEP Award for Graduate Student Writing",
-    "University Committee on Written English Proficiency",
-    "San Francisco State University"
-) %>% 
-  detailed_entries(
-    what = title,
-    with = from,
-    when = year,
-    where = where,
-    .protect = FALSE
-  )
-```
